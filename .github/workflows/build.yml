@@ -26,6 +26,9 @@ jobs:
           SDKMANAGER="$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager"
           yes | sudo env "JAVA_HOME=$JAVA_HOME" "$SDKMANAGER" --licenses > /dev/null || true
           sudo env "JAVA_HOME=$JAVA_HOME" "$SDKMANAGER" "platforms;android-36" "build-tools;36.0.0"
+          # sudo 运行 sdkmanager 会把 ~/.config/.android 变成 root 所有,
+          # 导致 AGP 无法写入 debug keystore,这里把属主改回来
+          sudo chown -R "$(id -u):$(id -g)" "$HOME/.config/.android" "$HOME/.android" 2>/dev/null || true
 
       - name: Set up Gradle
         uses: gradle/actions/setup-gradle@v4
