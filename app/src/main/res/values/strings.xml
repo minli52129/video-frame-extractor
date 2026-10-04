@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">视频截图工具</string>
+    <string name="pick_video">选择视频</string>
+    <string name="no_video">未选择视频</string>
+    <string name="mode_interval">按时间间隔截图</string>
+    <string name="mode_count">按数量平均分配截图</string>
+    <string name="hint_interval">间隔秒数,如 5</string>
+    <string name="hint_count">截图数量,如 10</string>
+    <string name="start">开始截图</string>
+    <string name="video_info">%1$s\n时长: %2$s</string>
+    <string name="status_progress">正在截图 %1$d/%2$d…</string>
+    <string name="status_done">完成!已保存 %1$d 张截图到\n相册 › Pictures/VideoFrames/%2$s</string>
+    <string name="status_failed">失败: %1$s</string>
+</resources>
