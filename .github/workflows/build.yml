@@ -20,10 +20,12 @@ jobs:
           java-version: 17
 
       # ubuntu-latest 运行器已预装 Android SDK($ANDROID_HOME,root 所有,需 sudo)
+      # 注意: sudo 会重置 PATH,sdkmanager 必须使用完整路径
       - name: Install Android SDK Platform 36
         run: |
-          yes | sudo sdkmanager --licenses > /dev/null || true
-          sudo sdkmanager "platforms;android-36" "build-tools;36.0.0"
+          SDKMANAGER="$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager"
+          yes | sudo env "JAVA_HOME=$JAVA_HOME" "$SDKMANAGER" --licenses > /dev/null || true
+          sudo env "JAVA_HOME=$JAVA_HOME" "$SDKMANAGER" "platforms;android-36" "build-tools;36.0.0"
 
       - name: Set up Gradle
         uses: gradle/actions/setup-gradle@v4
